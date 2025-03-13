@@ -12,7 +12,7 @@
         </button>
       </div>
       <textarea
-        class="w-full bg-gray-800 text-white p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none min-h-[100px] overflow-hidden resize-none"
+        class="w-full bg-gray-800 text-white p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none min-h-[100px] overflow-y-auto resize-none break-words"
         name="prompt[system_prompt]"
         data-prompt-autosave-target="input"
         id="systemPrompt"
@@ -31,7 +31,7 @@
         </button>
       </div>
       <textarea
-        class="w-full bg-gray-800 text-white p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none min-h-[200px] overflow-hidden resize-none"
+        class="w-full bg-gray-800 text-white p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none min-h-[200px] overflow-y-auto resize-none break-words"
         name="prompt[user_prompt]"
         data-prompt-autosave-target="input"
         id="userPrompt"
@@ -59,7 +59,7 @@
                   Copy
                 </button>
               </summary>
-              <pre class="text-xs text-gray-300 mt-1 whitespace-pre-wrap" id="liquidTag<%= key %>"><%= value.to_s %></pre>
+              <pre class="text-xs text-gray-300 mt-1 whitespace-pre-wrap break-words overflow-x-auto max-w-full" id="liquidTag<%= key %>"><%= value.to_s %></pre>
             </details>
           <% end %>
         </div>
@@ -77,7 +77,7 @@
             Copy
           </button>
         </div>
-        <pre class="w-full bg-gray-800 text-white p-3 rounded-lg text-sm whitespace-pre-wrap" id="fullPrompt"><%= Liquid::Template.parse(@selected_prompt.user_prompt).render(@dataset_record.recordable.to_llm_context.stringify_keys) %></pre>
+        <pre class="w-full bg-gray-800 text-white p-3 rounded-lg text-sm whitespace-pre-wrap overflow-x-auto break-words max-w-full" id="fullPrompt"><%= Liquid::Template.parse(@selected_prompt.user_prompt).render(@dataset_record.recordable.to_llm_context.stringify_keys) %></pre>
       </div>
     <% end %>
     <div class="text-sm text-center" data-prompt-autosave-target="status"></div>
@@ -102,7 +102,11 @@
           const textareas = textarea ? [textarea] : this.inputTargets
           textareas.forEach(ta => {
             ta.style.height = 'auto'
-            ta.style.height = ta.scrollHeight + 'px'
+            ta.style.height = (ta.scrollHeight + 5) + 'px'
+            
+            // Ensure horizontal text wrapping
+            ta.style.wordBreak = 'break-word'
+            ta.style.wordWrap = 'break-word'
           })
         }
 

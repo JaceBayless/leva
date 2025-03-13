@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+/* Global styles for text overflow handling */
+pre {
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+textarea {
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}

@@ -1,5 +1,7 @@
 # Leva - Flexible Evaluation Framework for Language Models
 
+[![Gem Version](https://badge.fury.io/rb/leva.svg)](https://badge.fury.io/rb/leva)
+
 Leva is a Ruby on Rails framework for evaluating Language Models (LLMs) using ActiveRecord datasets on production models. It provides a flexible structure for creating experiments, managing datasets, and implementing various evaluation logic on production data with security in mind.
 
 ![Leva - Workbench- Google Chrome](https://github.com/user-attachments/assets/ee487941-e11b-4c2a-983b-771ef27dd73c)
